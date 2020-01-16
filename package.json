@@ -1,0 +1,55 @@
+{
+  "name": "skillbox-start-template",
+  "version": "1.0.0",
+  "description": "It's a simple starting template for landings.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "npm run lint && gulp build",
+    "lint": "stylelint src/scss/**/*.scss --fix && eslint src/js/**/*.js --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "dev/scss/**/*.scss": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "dev/js/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "author": "Ivan Kazantsev",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "browser-sync": "^2.26.7",
+    "css-mqpacker": "^7.0.0",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-svgmin": "^2.2.0",
+    "gulp-svgstore": "^7.0.1",
+    "gulp-tinypng-compress": "^1.2.5",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-webp": "^4.0.1",
+    "husky": "^4.0.10",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "stylelint": "^13.0.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-scss": "^4.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.13.0"
+  }
+}

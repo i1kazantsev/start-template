@@ -1,0 +1,76 @@
+$xs-max: 0;
+$sm: 0;
+$sm-max: 0;
+$md: 0;
+$md-max: 0;
+$lg: 0;
+$lg-max: 0;
+$xl: 0;
+
+@mixin media($arg1, $arg2: 0) {
+  @if (type-of($arg1) == string) {
+    @if ($arg1 == xs-max) {
+      $arg1: '(max-width: #{$xs-max})';
+    } @else if ($arg1 == sm) {
+      $arg1: '(min-width: #{$sm})';
+    } @else if ($arg1 == sm-max) {
+      $arg1: '(max-width: #{$sm-max})';
+    } @else if ($arg1 == md) {
+      $arg1: '(min-width: #{$md})';
+    } @else if ($arg1 == md-max) {
+      $arg1: '(max-width: #{$md-max})';
+    } @else if ($arg1 == lg) {
+      $arg1: '(min-width: #{$lg})';
+    } @else if ($arg1 == lg-max) {
+      $arg1: '(max-width: #{$lg-max})';
+    } @else if ($arg1 == xl) {
+      $arg1: '(min-width: #{$xl})';
+    }
+  }
+
+  @if (type-of($arg2) == string) {
+    @if ($arg2 == sm-max) {
+      $arg2: '(max-width: #{$sm-max})';
+    } @else if ($arg2 == md-max) {
+      $arg2: '(max-width: #{$md-max})';
+    } @else if ($arg2 == lg-max) {
+      $arg2: '(max-width: #{$lg-max})';
+    }
+  }
+
+  @if (type-of($arg1) == string and type-of($arg2) == string) {
+    @media #{'#{$arg1} and #{$arg2}'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == string and $arg2 == 0) {
+    @media #{$arg1} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == string and (type-of($arg2) == number and $arg2 != 0)) {
+    @media #{'#{$arg1} and (max-width: #{$arg2}px)'} {
+      @content;
+    }
+  }
+
+  @if ((type-of($arg1) == number and $arg1 != 0) and type-of($arg2) == string) {
+    @media #{'(min-width: #{$arg1}px) and #{$arg2}'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == number and type-of($arg2) == number) {
+    @media #{'(min-width: #{$arg1}px) and (max-width: #{$arg2}px)'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == number and $arg2 == 0) {
+    @media #{'(min-width: #{$arg1}px)'} {
+      @content;
+    }
+  }
+}

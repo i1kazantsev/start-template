@@ -1,0 +1,69 @@
+$sm-c: 0;
+$md-c: 0;
+$lg-c: 0;
+$xl-c: 0;
+
+@mixin container($arg) {
+  @if ($arg == sm) {
+    .container {
+      max-width: #{$sm-c};
+      margin: 0 auto;
+
+      @if ($md-c != 0) {
+        @media (min-width: #{$md}) {
+          width: #{$md-c};
+          max-width: none;
+        }
+      }
+      @if ($lg-c != 0) {
+        @media (min-width: #{$lg}) {
+          width: #{$lg-c};
+        }
+      }
+      @if ($xl-c != 0) {
+        @media (min-width: #{$xl}) {
+          width: #{$xl-c};
+        }
+      }
+    }
+  } @else if ($arg == md) {
+    .container {
+      @media (min-width: #{$md}) {
+        width: #{$md-c};
+        margin: 0 auto;
+      }
+
+      @if ($lg-c != 0) {
+        @media (min-width: #{$lg}) {
+          width: #{$lg-c};
+        }
+      }
+
+      @if ($xl-c != 0) {
+        @media (min-width: #{$xl}) {
+          width: #{$xl-c};
+        }
+      }
+    }
+  } @else if ($arg == lg) {
+    .container {
+      @media (min-width: #{$lg}) {
+        width: #{$lg-c};
+        margin: 0 auto;
+      }
+
+      @if ($xl-c != 0) {
+        @media (min-width: #{$xl}) {
+          width: #{$xl-c};
+        }
+      }
+    }
+  } @else if ($arg == xl) {
+    @media (min-width: #{$xl}) {
+      .container {
+        width: #{$xl-c};
+        margin: 0 auto;
+      }
+    }
+  }
+}
