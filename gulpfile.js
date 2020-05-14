@@ -115,4 +115,4 @@ const copy = () => {
 }
 
 exports.dev = series(clean, copy, generateWebp, svg, html, css, js, startServer)
-exports.build = series(clean, copy, generateWebp, imageMin, svg, html, css, js, jsBuild, startServer)
+exports.build = series(clean, copy, generateWebp, imageMin, svg, html, css, js, jsBuild)
