@@ -1,3 +1,3 @@
-# Skillbox || Starting template
+# Starting template
 
 Это простой стартовый шаблон для лендингов.
